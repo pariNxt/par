@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>!! SYSTEM TERKUNCI !!</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: black;
+      color: red;
+      font-family: 'Share Tech Mono', monospace;
+      text-align: center;
+      overflow: hidden;
+      animation: flickerBg 1s infinite;
+    }
+
+    @keyframes flickerBg {
+      0%, 100% { background-color: black; }
+      50% { background-color: #2a0000; }
+    }
+
+    h1 {
+      font-size: 40px;
+      margin-top: 50px;
+      color: #ff0000;
+      text-shadow: 0 0 10px red, 0 0 20px red;
+      animation: glitch 0.8s infinite;
+    }
+
+    @keyframes glitch {
+      0% { transform: translate(0); }
+      20% { transform: translate(-2px, 2px); }
+      40% { transform: translate(2px, -1px); }
+      60% { transform: translate(-1px, 1px); }
+      80% { transform: translate(1px, -2px); }
+      100% { transform: translate(0); }
+    }
+
+    .message {
+      font-size: 22px;
+      margin: 30px;
+      color: crimson;
+      animation: shake 1.5s infinite alternate;
+    }
+
+    @keyframes shake {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.01); }
+    }
+
+    .timer {
+      font-size: 42px;
+      color: yellow;
+      margin-top: 20px;
+      text-shadow: 0 0 10px yellow;
+    }
+
+    .warning {
+      font-style: italic;
+      font-size: 20px;
+      color: #ff3333;
+      margin-top: 30px;
+      animation: flickerText 0.5s infinite alternate;
+    }
+
+    @keyframes flickerText {
+      from { opacity: 1; }
+      to { opacity: 0.3; }
+    }
+
+    .overlay-text {
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 100px;
+      color: rgba(255, 0, 0, 0.1);
+      letter-spacing: 20px;
+      animation: pulse 3s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); }
+      50% { transform: translate(-50%, -50%) scale(1.05); }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>☠ SYSTEM TERKUNCI ☠</h1>
+
+  <div class="message">
+    Semua file kamu telah DIENKRIPSI!<br><br>
+    Untuk mengembalikan, transfer ke:<br>
+    <span style="color: white; font-size: 24px;">085974263016</span><br><br>
+    Jangan coba-coba cabut baterai atau reset!
+  </div>
+
+  <div class="timer" id="countdown">01:00:00</div>
+
+  <div class="warning">
+    (Jika tidak, seluruh data di perangkat ini akan dihancurkan...)
+  </div>
+
+  <div class="overlay-text">ERROR</div>
+
+  <audio autoplay loop>
+    <source src="https://cdn.pixabay.com/audio/2022/03/22/audio_1c98d5bc4c.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    let waktu = 3600;
+    const countdown = document.getElementById("countdown");
+
+    function updateTimer() {
+      const jam = String(Math.floor(waktu / 3600)).padStart(2, '0');
+      const menit = String(Math.floor((waktu % 3600) / 60)).padStart(2, '0');
+      const detik = String(waktu % 60).padStart(2, '0');
+      countdown.textContent = `${jam}:${menit}:${detik}`;
+      if (waktu > 0) waktu--;
+    }
+
+    setInterval(updateTimer, 1000);
+  </script>
+
+</body>
+</html>
